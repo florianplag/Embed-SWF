@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<script type="text/javascript" src="<%= swfObjectPath_useGoogle == true ? 'http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js' : swfObjectPath %>"></script>
+		<script type="text/javascript">
+			swfobject.registerObject("<%= contentID %>", "<%= fpVersionMajor %>.<%= fpVersionMinor %>.<%= fpVersionRelease %>");
+		</script>
+	</head>
+	<body>
+		<div>
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="<%= dimensionWidth %><%= dimensionUnit %>" height="<%= dimensionHeight %><%= dimensionUnit %>" id="<%= contentID %>"  name="<%= attributeName %>" class="<%= attributeClass %>" align="<%= attributeAlign %>">
+				<param name="movie" value="<%= flashFile %>" />
+				<% _.each(params, function(name, key) { 
+					%><param name="<%= key %>" value="<%= name %>" />
+				<% }); %>
+				<param name="flashvars" value="<% _.each(flashVars, function(name, key) { 
+%><%= key %>=<%= name %>&<% });%>" />
+				  				
+				<!--[if !IE]>-->
+				<object type="application/x-shockwave-flash" data="<%= flashFile %>" width="<%= dimensionWidth %><%= dimensionUnit %>" height="<%= dimensionHeight %><%= dimensionUnit %>" class="<%= attributeClass %>" align="<%= attributeAlign %>">
+				<% _.each(params, function(name, key) { 
+					%><param name="<%= key %>" value="<%= name %>" />
+				<% }); %>
+				<param name="flashvars" value="<% _.each(flashVars, function(name, key) { 
+%><%= key %>=<%= name %>&<% });%>" />				
+				<!--<![endif]-->
+					<%= alternativeContent %>
+				<!--[if !IE]>-->
+				</object>
+				<!--<![endif]-->
+			</object>
+		</div>
+	</body>
+</html>
