@@ -27,7 +27,7 @@
 			<!-- ::: CONTENT ::: -->
 			<div class="content">
 				<div class="span12 columns">
-					<h2>Links</h2>
+					<h2>Links & Ressources</h2>
 					<h3>Embedding Flash Content</h3>
 					<table class="zebra-striped">
 						<thead>
@@ -39,7 +39,7 @@
 						<tbody>
 							<tr>
 								<td><a href="http://code.google.com/p/swfobject/">SWFObject</a></td>
-								<td>SWFObject is an easy-to-use and standards-friendly method to embed Flash content, which utilizes one small JavaScript file.</td>
+								<td>SWFObject is an easy-to-use and standards-friendly method to embed Flash content, which utilizes one small JavaScript file. This is the official project site. Especially helpful are the <a href="http://code.google.com/p/swfobject/wiki/documentation">documentation</a> and the <a href="http://code.google.com/p/swfobject/wiki/faq">FAQ</a>). </td>
 							</tr>
 							<tr>
 								<td><a href="http://code.google.com/intl/de-DE/apis/libraries/devguide.html">Google AJAX Libraries</a></td>
@@ -62,8 +62,12 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><a href="http://www.adobe.com/software/flash/about/">Adobe Flash Player</a></td>
-								<td>Latest runtime versions.</td>
+								<td><a href="http://get.adobe.com/flashplayer/">Adobe Flash Player</a></td>
+								<td>Get latest runtime versions of Adobe Flash Player (Desktop version).</td>
+							</tr>
+							<tr>
+								<td><a href="https://market.android.com/details?id=com.adobe.flashplayer">Adobe Flash Player for Android</a></td>
+								<td>Flash Player for Android in the Android Market.</td>
 							</tr>
 							<tr>
 								<td><a href="http://kb2.adobe.com/cps/141/tn_14157.html">Uninstall Flash Player</a></td>
@@ -80,7 +84,7 @@
 						</tbody>
 					</table>					
 					
-					<h3>Others</h3>
+					<h3>Libraries used for embed-swf.org</h3>
 					<table class="zebra-striped">
 						<thead>
 							<tr>
