@@ -172,7 +172,7 @@ $pageId = 2;
 								</legend>
 								<br />
 								<div class="clearfix">
-									<label data-content="Specifies a classname for an element">Class</label>
+									<label data-content="You can specify a class name that will be assigned to the Flash content. So you can style it with CSS.">Class</label>
 									<div class="input">
 										<input class="xlarge" id="f_attributeClass" name="" size="30" type="text" value="" />
 									</div>
