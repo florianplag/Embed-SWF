@@ -48,7 +48,10 @@
 		
 
 			<div class="alert-message block-message info" style="font-size:1.2em; margin-top: 20px;margin-bottom: 30px;">
-		          Your current Flash Player Version is: <strong id="resultTxt"></strong> 
+		          Your current Flash Player Version is: <strong id="resultTxt"></strong>
+		        <p class="help-block">
+					
+				</p> 
 			</div>
              
             <h2>Latest Flash Player Versions</h2> 
