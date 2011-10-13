@@ -5,4 +5,8 @@ body {
 .explanation {
 	/* help symbol for all the labels */
 	cursor:help; 
+}                  
+
+.container-fluid {
+	width: 1100px;
 }
