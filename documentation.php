@@ -220,8 +220,9 @@
 					</p>
 					<h2>Thanks</h2>
 					<p>Thanks to creators of SWFObject for this great open source project!</p>
-						
-					</p>
+					
+					<h2>Trademarks</h2>
+					<p>Adobe and Flash Player are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and/or other countries.</p>
 				</div>
 			</div>
 			<!-- /CONTENT -->
