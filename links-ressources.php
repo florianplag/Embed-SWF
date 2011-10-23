@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Links & Ressources</title>
-		<meta name="description" content="">
-		<meta name="author" content="">
+		<title>Flash Player Links & Ressources</title>
+		<meta name="description" content="Useful links and ressources about Flash Player and embedding Flash Content (SWF files) in HTML.">
+		<meta name="author" content="Florian Plag">
 		<?php
 			include "php/js-includes.php";
 		?>
