@@ -81,12 +81,12 @@ function updateFlashPlayerDisplay(fpVersionString, operatingSystem) {
      	// player is up-to-date
 		$(".alert-message").removeClass('info');
 		$(".alert-message").addClass('success');
-		$('.help-block').text('Seems like your Flash Player is up to date.'); 			
+		$('.help-block:first').text('Seems like your Flash Player is up to date.'); 			
 	 } else {
 	 	// player is not up-to-date
 		$(".alert-message").removeClass('info');
 		$(".alert-message").addClass('error');	
-		$('.help-block').text('Seems like your Flash Player is not up to date.'); 	
+		$('.help-block:first').text('Seems like your Flash Player is not up to date.'); 	
 	 }
       
       return this;
