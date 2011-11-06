@@ -4,7 +4,7 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<!-- Le styles -->
-		<link href="csslibs/bootstrap-1.3.0.min.css" rel="stylesheet">
+		<link href="csslibs/bootstrap-1.4.0.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<!-- Le fav and touch icons -->
 		<script src="jslibs/json2.js"></script>

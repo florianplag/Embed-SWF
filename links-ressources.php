@@ -47,7 +47,11 @@
 							</tr>
 							<tr>
 								<td><a href="http://kb2.adobe.com/cps/127/tn_12701.html">Adobe Flash Embed Settings</a></td>
-								<td>This document lists the required and optional attributes of the object and embed tags used to publish SWF (Flash-enabled) content in HTML pages for display in web browsers.</td>
+								<td>This document lists the required and optional attributes of the object and embed tags used to publish SWF (Flash-enabled) content in HTML pages for display in web browsers. Contains also detailed explanations about wmode settings.</td>
+							</tr>
+							<tr>
+								<td><a href="http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f18.html">About the object and embed tags</a></td>
+								<td>This document lists explanatins for the object and embed tags.</td>
 							</tr>
 						</tbody>
 					</table>
@@ -110,10 +114,13 @@
 				</div>
 			</div>
 			<!-- /CONTENT -->
-		</div>
-		<!-- /container -->
+
 		<?php
 			include "php/footer.php";
 		?>
+		
+		</div>
+		<!-- /container -->		
+		
 	</body>
 </html>

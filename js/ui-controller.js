@@ -43,36 +43,32 @@ $(document).ready(function(){
 
 	initButtons();
 	
-	/*
-	$("body").keypress(function(event) {
-  		if ( event.which == 101 ) {
-     		event.preventDefault();
-     		exportIt();
-   		}
-
-	});
-	*/
 	
 	/*
 	 * Init all button on the UI
 	 */
 	function initButtons() {
 		
+		// trigger export of the final HTML code
 		$('#exportButton').click(function(event) {
 	  		exportIt();
 		});		
 		
+		// reset all settings in the form
 		$("#resetFormButton").click(function(event) {
 			event.preventDefault();
 			$('.content').slideUp().slideDown();			
 			swfObjConf.recoverDefaults();
 		});			
+		
+		// apply an imported setting
 		$("#applyCustomSetingsButton").click(function(event) {
 			event.preventDefault();
 			var newSettings = JSON.parse ($("#customSettingsTextArea").val());
 			swfObjConf.initWithNewContent(newSettings );
 		});	
 				
+		// show/hide the import/export panel at the left side		
 		$("#showExportTextArea").click(function(event) {
 			event.preventDefault();
 			$("#importExportDiv").toggle(function() {
@@ -83,17 +79,35 @@ $(document).ready(function(){
 					$("#showExportTextArea").html("Show");
 				}
   			});
-			
-			
-
-		});			
+  			
+  			
+		});		
+		
+		$("#downloadButton").click(function() {
+			$.generateFile({
+				filename	: 'embed-swf.html',
+				content		: $('#exportCodeTxt').val(),
+				script		: 'php/download.php'
+		});
+		
+		});	
 			
 	}
 	
+	/*
+	 * Export function when the users wants the final HTML code
+	 */
 	function exportIt() {
 
 			// prepare model for the export
 			swfObjConf.updateForExport();
+			
+			// decide if the note to download swfobject.js shall be shown  			
+  			if(swfObjConf.get("swfObjectPath_useGoogle") == true) {
+  				$("#downloadSwfObjectNote").hide();
+  			} else {
+  				$("#downloadSwfObjectNote").show();	
+  			}			
 			
 			// show modal dialog
 			$('#modalExportDialog').modal('toggle');

@@ -16,6 +16,7 @@ $pageId = 2;
 		<script src="js/Template.js"></script>
 		<script src="js/FormView.js"></script>
 		<script src="js/ui-controller.js"></script>
+		<script src="jslibs/jquery.generateFile.js"></script>
 	</head>
 	<body>
 		<!-- ::::::::::::::: MODAL ::::::::::::::::::::: -->
@@ -28,8 +29,8 @@ $pageId = 2;
 				<textarea id="exportCodeTxt" class="copy-code" readonly="readonly" onclick="this.focus();this.select()"  style=' height:300px; width:100%; overflow:scroll'></textarea>
 			</div>
 			<div class="modal-footer">
-				<p>
-					Please save this source code as .html file. Then add your .swf file (and <a href="http://code.google.com/p/swfobject/downloads/list" target="_blank">swfobject.js</a> if you don't use the Google hosted version).
+				<p class="">
+					<a class="btn large primary" id="downloadButton">Download</a>Download this .html file and add your .swf file. <span id="downloadSwfObjectNote">Don't forget to add <a href="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js" target="_blank">swfobject.js</a> (right click and „save as”).</span>
 				</p>
 			</div>
 		</div>
@@ -44,10 +45,9 @@ $pageId = 2;
 				<div class="well">
 					<h4>Settings</h4>
 					<p>
-					You can <a  id="resetFormButton">restore the default settings</a> of the form.
+						You can <a  id="resetFormButton">restore the default settings</a> of the form.
 					</p>
-					</ul>
-					<h5>Import / Export</h5>
+					</ul> <h5>Import / Export</h5>
 					<p>
 						Import and export custom settings using a JSON object. <a id="showExportTextArea">Show</a>
 					</p>
@@ -63,7 +63,7 @@ $pageId = 2;
 			<!-- ::: CONTENT ::: -->
 			<div class="content">
 				<!-- ::: TABS ::: -->
-				<ul class="tabs">
+				<ul class="tabs" data-tabs="tabs">
 					<li class="active">
 						<a href="#tab1">SWF Configuration</a>
 					</li>
@@ -81,10 +81,10 @@ $pageId = 2;
 					</li>
 				</ul>
 				<div class="row">
-					<div class="span12 columns">
-						<form id="configForm" class="configForm tab-content">
+					<div class="span12">
+						<form id="configForm" class="configForm tab-content" >
 							<!--  :::::: TAB1 ::::: -->
-							<fieldset id="tab1" class="active" >
+							<fieldset id="tab1" class="active tab-pane" >
 								<legend>
 									Flash Content
 									<p class="help-block">
@@ -92,13 +92,13 @@ $pageId = 2;
 									</p>
 								</legend>
 								<div class="clearfix">
-									<label data-content="The relative or absolute path to your flash content (.swf file).">Flash file (.swf)</label>
+									<label data-content="<p><strong>Path and filename of your SWF file.</strong></p><p>The relative or absolute path to your flash content. Examples: <code>main.swf</code> or <code>subfolder/app.swf</code> or <code>http://example.com/main.swf</code>.</p>">Flash file (.swf)</label>
 									<div class="input">
 										<input class="xxlarge" id="f_flashFile" name="" size="30" type="text" value="" />
 									</div>
 								</div><!-- /clearfix -->
 								<div class="clearfix">
-									<label data-content="The width and height of your flash content. Default unit is pixel, you can also choose percent.">Dimensions</label>
+									<label data-content="<p><strong>The width and height of your flash content.</strong></p><p>Default unit is pixel, you can also choose percent (<code>%</code>).</p>">Dimensions</label>
 									<div class="input">
 										<input class="mini" id="f_dimensionWidth" name="" size="30" type="text" />
 										x
@@ -110,13 +110,13 @@ $pageId = 2;
 									</div>
 								</div><!-- /clearfix -->
 								<div class="clearfix">
-									<label data-content="The background color of your flash content (Hex RGB value in the format #rrggbb). It overrides the background color setting specified in the Flash file.">Background Color</label>
+									<label data-content="<p><strong>Background color of your flash content.</strong></p><p>The background color is specified as Hex RGB value in the format <code>#rrggbb</code> (for instance <code>#FF0000</code> for red). It overrides the background color setting specified in the Flash file.</p>">Background Color</label>
 									<div class="input">
 										<input class="mini" id="f_param_bgcolor" name="" size="30" type="text" value="" />
 									</div>
 								</div><!-- /clearfix -->
 								<div class="clearfix">
-									<label data-content="The required flash player version (major, minor and release version, for instance 10.0.0).">Required Flash Player Version</label>
+									<label data-content="<p><strong>The minimum Flash Player version.</strong></p><p>Adjust this setting to the required flash player version of your content. If the user doesn't have it, the alternative content is shown (or express install starts if activated).</p><p>See 'Flash Player Version' page for a list of important versions if you are not sure.</p>">Required Flash Player Version</label>
 									<div class="input">
 										<input class="mini" id="f_fpVersionMajor" name="" min="5" max="15" size="30" type="number"  />
 										.
@@ -126,7 +126,7 @@ $pageId = 2;
 									</div>
 								</div><!-- /clearfix -->
 								<div class="clearfix">
-									<label data-content="The relative or absolute path to your expressInstall.swf file (if activated). Express install displays a standardized Flash plugin download dialog instead of your Flash content when the required plugin version is not available.">Express Install</label>
+									<label data-content="<p><strong>Path to your Express Install SWF file.</strong></p>The relative or absolute path to your <code>expressInstall.swf</code> file (if this feature is activated). <p>Express install displays a standardized Flash plugin download dialog instead of your Flash content when the required plugin version is not available.</p>">Express Install</label>
 									<div class="input">
 										<div class="input-prepend">
 											<input class="large" id="f_expressInstallSwfPath"  disabled="disabled" name="" size="16" type="text" />
@@ -137,7 +137,7 @@ $pageId = 2;
 									</div>
 								</div><!-- /clearfix -->
 							</fieldset>
-							<fieldset id="tab2" class="tabContent">
+							<fieldset id="tab2" class="tab-pane">
 								<legend>
 									HTML Definitions
 									<p class="help-block">
@@ -145,13 +145,13 @@ $pageId = 2;
 									</p>
 								</legend>
 								<div class="clearfix">
-									<label data-content="The ID of the HTML element (containing your alternative content) you would like to have replaced by your Flash content.">Flash Content ID</label>
+									<label data-content="<p><strong>ID of the HTML Container for the Flash content.</strong></p><p>The ID of the HTML element you would like to have replaced by your Flash content (normally a div element). This element also contains your alternative content.</p><p>If you have several SWFs on a page, it's important to use a unique ID for each one (otherwise they will be messed up).</p>">Flash Content ID</label>
 									<div class="input">
 										<input class="xlarge" id="f_contentID"  name="" size="30" type="text" />
 									</div>
 								</div><!-- /clearfix -->
 								<div class="clearfix">
-									<label data-content="The relative or absolute path to your swfobject.js file. You can also integrate swfobject.js directly from Google, then you don't need to host it for yourself.">SWFObject (.js)</label>
+									<label data-content="<p><strong>Path and filename of swfobject.js</strong></p><p>The relative or absolute path to your swfobject.js javascript file. Examples: <code>swfobject.js</code> or <code>js/swfobject.js</code> or <code>http://examples.com/swfobject.js</code>.</p><p>For your convience, you can also integrate swfobject.js from Google, then you don't even need to download swfobject.js because it comes directly from the Google Ajax Libraries.</p>">SWFObject (.js)</label>
 									<div class="input">
 										<input class="xlarge" id="f_swfObjectPath" name="" size="30" type="text" />
 										or use SWFObject hosted by Google
@@ -159,7 +159,7 @@ $pageId = 2;
 									</div>
 								</div><!-- /clearfix -->
 								<div class="clearfix">
-									<label for="textarea" data-content="It will be displayed if Flash is not installed or supported. This content will also be picked up by search engines, making it a great tool for creating search-engine-friendly content.">Alternative Content</label>
+									<label for="textarea" data-content="<p><strong>Alternative content when Flash is not available or supported.</strong></p><p>The alternative content will be displayed if Flash is not installed or supported (for example on iOS) or the installed version is below the required minimum version. So you could use it for a Flash Player error message or even better an alternative HTML version of your Flash file (if possible...). Furthermore, this content will also be picked up by search engines, so place for your search-engine content and keywords here.</p>">Alternative Content</label>
 									<div class="input">
 										<textarea class="xxlarge" id="f_alternativeContent" name="textarea"></textarea>
 									</div>
@@ -168,7 +168,7 @@ $pageId = 2;
 									Attributes
 									<p class="help-block">
 										Optional section.
-									</p>									
+									</p>
 								</legend>
 								<br />
 								<div class="clearfix">
@@ -197,16 +197,17 @@ $pageId = 2;
 									</div>
 								</div><!-- /clearfix -->
 							</fieldset>
-							<fieldset id="tab3" class="tabContent">
+							<fieldset id="tab3" class="tab-pane">
 								<legend>
 									Parameter
 									<p class="help-block">
 										Flash Player provides a lot of parameters. If don't need or know them, just skip this section.
 									</p>
 								</legend>
-								<div class="span5 columns">
+								<div class="row">
+								<div class="span5">
 									<div class="clearfix">
-										<label data-content="Specifies whether the movie begins playing immediately on loading in the browser (default: true).">play</label>
+										<label data-content="<p><strong>Specifies whether the movie begins playing immediately on loading in the browser</strong></p><p>Default is <code>true</code>. Has no effect on Flex Applications.</p>">play</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_play">
 												<option></option>
@@ -216,7 +217,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Specifies whether the movie repeats indefinitely or stops when it reaches the last frame (default: true).">loop</label>
+										<label data-content="<p><strong>Specifies whether the movie repeats indefinitely or stops when it reaches the last frame</strong></p><p>Possible values are <code>true</code> (default) and <code>false</code>. This parameter has no effect on Flex Applications.</p>">loop</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_loop">
 												<option></option>
@@ -226,7 +227,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Shows a shortcut menu when users right-click on the flash content. To show only About Flash in the shortcut menu, select false (default: true).">menu</label>
+										<label data-content="<p><strong>Changes the appearance of the menu that appears when users right-click over an application.</strong></p><p><code>true</code> displays the entire menu (default). Set to <code>false</code> to display only the 'About' and 'Settings' options on the menu.</p> ">menu</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_menu">
 												<option></option>
@@ -236,7 +237,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Specifies the trade-off between processing time and appearance (default: high).">quality</label>
+										<label data-content="<p><strong>Specifies the display list Stage rendering quality</strong></p><p><code>low</code> favors playback speed over appearance and never uses anti-aliasing.</p><p><code>autolow</code> emphasizes speed at first but improves appearance whenever possible. Playback begins with anti-aliasing turned off. If Flash Player can handle it, anti-aliasing is turned on.</p><p><code>autohigh</code> emphasizes playback speed and appearance equally at first but sacrifices appearance for playback speed if necessary. Playback begins with anti-aliasing turned on. If the frame rate drops, anti-aliasing is turned off.</p><p><code>medium</code> applies some anti-aliasing and does not smooth bitmaps.<p><p><code>high</code> (default) favors appearance over playback speed and always applies anti-aliasing. If the movie does not contain animation, bitmaps are smoothed.</p><p><code>best</code> provides the best display quality and does not consider playback speed. All output is anti-aliased and all bitmaps are smoothed.</p>">quality</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_quality">
 												<option></option>
@@ -251,7 +252,7 @@ $pageId = 2;
 									</div><!-- /clearfix -->
 									<br />
 									<div class="clearfix">
-										<label data-content="Specifies scaling, aspect ratio, borders, distortion and cropping for if you have changed the document's original width and height (default: ).">scale</label>
+										<label data-content="<p><strong>Defines how the browser fills the screen with the SWF file.</strong></p><p><code>showall</code> shows the SWF file in the specified area, while maintaining the original aspect ratio. Borders may appear on two sides.</p><p>Set to <code>noborder</code> to scale the SWF file to fill the specified area but possibly with some cropping, while maintaining the original aspect ratio.</p><p>Set to <code>exactfit</code> to make the entire SWF file visible in the specified area without trying to preserve the original aspect ratio. Distortion may occur.</p><p><code>noscale</code> prevents the SWF file from scaling to fit the area. Cropping can occur.</p>">scale</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_scale">
 												<option></option>
@@ -263,7 +264,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Specifies where the content is placed within the application: top (t), left (l), right (r) or bottom (b) or combinations between them.">salign</label>
+										<label data-content="<p><strong>Positions the SWF file within the Browser</strong></p> <p>At the <code>t</code> (top), <code>l</code> (left), <code>r</code> (right) or <code>b</code> (bottom) of the Browser. Or combinations of those positions (like top-left <code>tl</code>)</p>">salign</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_salign">
 												<option></option>
@@ -279,7 +280,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Sets the Window Mode property of the Flash movie for transparency, layering, and positioning in the browser. The default value is 'window' if this attribute is omitted.">wmode</label>
+										<label data-content="<p><strong>Sets the Window Mode property of the Flash movie for transparency, layering, and positioning in the browser.</strong></p><p>The default value is <code>window</code> and plays the SWF in its own rectangular window on a web page.</p><p>Set to <code>opaque</code> to hide everything on the page behind it (useless on OS X and Linux). Disables Hardware Rendering.</p><p>Set to <code>transparent</code> so that the background of the HTML page shows through all transparent portions of the SWF file. This can slow animation performance and disables Hardware Rendering.</p><p><code>gpu</code> was introduced with Flash Player 10, but since Flash Player 10.1 hardware rendering is automatically enabled on supported devices, so it's not necessary to add it.</p><p><code>direct</code> is recommended to provide the best performance for content playback. It enables hardware accelerated presentation of SWF content that uses Stage Video or Stage 3D.</p>">wmode</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_wmode">
 												<option></option>
@@ -292,7 +293,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 								</div><!-- span 5 columns -->
-								<div class="span5 columns">
+								<div class="span5">
 									<div class="clearfix">
 										<label data-content="Specifies whether users are allowed to use the Tab key to move keyboard focus out of a Flash movie and into the surrounding HTML (or the browser, if there is nothing focusable in the HTML following the Flash movie). The default value is true if this attribute is omitted.">seamlesstabbing</label>
 										<div class="input">
@@ -304,7 +305,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Controls a SWF file's access to network functionality. The default value is 'all' if this attribute is omitted.">allownetworking</label>
+										<label data-content="<p><strong>Controls a SWF file's access to network functionality.</strong></p><p>The default value is <code>all</code> which means that there are no restrictions.</p><p><code>internal</code> means that the SWF file cannot call browser navigation or browser interaction APIs (such as ExternalInterface.call, fscommand, and navigateToURL), but other networking APIs.</p><p>In addition to the APIs restriced by the previous setting, <code>none</code> forbids that the SWF files can call networking or SWF-to-SWF file communication APIs (such as URLLoader.load(), Security.loadPolicyFile(), and SharedObject.getLocal()).</p>">allownetworking</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_allownetworking">
 												<option></option>
@@ -315,7 +316,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Controls the ability to perform outbound scripting from within a Flash SWF. The default value is 'always' if this attribute is omitted.">allowscriptaccess</label>
+										<label data-content="<p><strong>Controls the ability to perform outbound scripting from within a SWF file.</strong> This affects operations like ExternalInterface.call, fscommand or navigateToUrl.</p><p>The default value is <code>always</code> (outbound scripting always succeeds).</p><p>With <code>samedomain</code> outbound scripting only succeeds when the application is from the same domain as the HTML page.</p>Outbound scripting always fails if set to <p><code>never</code>.</p>">allowscriptaccess</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_allowscriptaccess">
 												<option></option>
@@ -326,7 +327,7 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Enables full-screen mode. The default value is false if this attribute is omitted. You must have version 9,0,28,0 or greater of Flash Player installed to use full-screen mode.">allowfullscreen</label>
+										<label data-content="<p><strong>Allows Full-screen mode.</strong></p><p><code>true</code> allows the SWF file to enter full screen mode via ActionScript. Default is <code>false</code>. Full-screen mode requires Flash Player 9,0,28,0 or greater.</p>">allowfullscreen</label>
 										<div class="input">
 											<select class="small" name="" id="f_param_allowfullscreen">
 												<option></option>
@@ -366,14 +367,15 @@ $pageId = 2;
 										</div>
 									</div><!-- /clearfix -->
 									<div class="clearfix">
-										<label data-content="Specifies the base directory or URL used to resolve all relative path statements in the Flash Player movie. This attribute is helpful when your Flash Player movies are kept in a different directory from your other files.">base</label>
+										<label data-content="<p><strong>Specifies the base directory or URL used to resolve all relative path statements in ActionScript.</strong></p> <p>This attribute is very helpful when your SWFs are kept in a different directory than your HTML file.</p><p>Using the value <code>.</code> (just a dot) stands for the path where the main SWF is located.</p>">base</label>
 										<div class="input">
-											<input class="mini" id="f_param_base" name="" size="30" type="text" value="" />
+											<input class="large" id="f_param_base" name="" size="30" type="text" value="" />
 										</div>
 									</div><!-- /clearfix -->
 								</div><!-- span 6 columns -->
+								</div><!--row-->
 							</fieldset>
-							<fieldset id="tab4">
+							<fieldset id="tab4" class="tab-pane">
 								<div class="span12 columns">
 									<legend>
 										Flash Variables (Flashvars)
@@ -440,7 +442,7 @@ $pageId = 2;
 									</table>
 								</div>
 							</fieldset>
-							<fieldset id="tab5">
+							<fieldset id="tab5" class="tab-pane">
 								<legend>
 									Templates
 									<p class="help-block">
@@ -478,10 +480,10 @@ $pageId = 2;
 				<!-- ::: TAB1 ::: -->
 			</div>
 			<!-- /CONTENT -->
+			<?php
+			include "php/footer.php";
+			?>
 		</div>
 		<!-- /container -->
-		<?php
-		include "php/footer.php";
-		?>
 	</body>
 </html>

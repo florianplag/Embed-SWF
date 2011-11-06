@@ -60,7 +60,7 @@ var Template = Backbone.Model.extend({
 	 */
 	useCustomTemplate: false,
 	
-	renderTemplate : function() {
+	renderTemplate : function(unescapedOutput) {
 		this.set({
 			currentCode : ""
 		});
@@ -84,7 +84,11 @@ var Template = Backbone.Model.extend({
 			});				
 		}
 				
-		return this.escape("currentCode");
+		if (unescapedOutput) {
+			return this.get("currentCode");
+		} else {
+			return this.escape("currentCode");
+		}
 	}
 });
 

@@ -22,13 +22,8 @@
 		?>
 
 		<!-- ::::::::::::::: CONTAINER ::::::::::::::::::::: -->
-		<div class="container-fluid">
+		<div class="container">
 
-			<!-- ::: SIDEBAR :::
-			<div class="sidebar">
-				...
-			</div>
-			 -->
 			<!-- ::: CONTENT ::: -->
 			<div class="content">
 				<!-- Main hero unit for a primary marketing message or call to action -->
@@ -65,10 +60,13 @@
 
 			</div>
 			<!-- /CONTENT -->
-		</div>
-		<!-- /container -->
+
 		<?php
 include "php/footer.php";
 		?>
+		
+		</div>
+		<!-- /container -->		
+		
 	</body>
 </html>

@@ -77,10 +77,11 @@ $pageId = 3;
 				</div>
 			</div>
 			<!-- /CONTENT -->
-		</div>
-		<!-- /container -->
 		<?php
 		include "php/footer.php";
 		?>
+		</div>
+		<!-- /container -->
+		
 	</body>
 </html>

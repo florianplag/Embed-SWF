@@ -1,5 +1,4 @@
-        <div class="span12">
-			<footer>
+        	<footer>
 				<p>
 					
 					<!-- Dieses Tag in den Head-Bereich oder direkt vor dem schließenden Body-Tag einfügen -->
@@ -14,8 +13,7 @@
 				<p class="help-block">
 					By Florian Plag 2011 | <a href="http://www.video-flash.de">www.video-flash.de</a>
 				</p>
-			
-			</footer>	
+			</footer>
 			
 			
 		<script type="text/javascript">
@@ -32,4 +30,3 @@
 		  */
 		</script>			
 			
-		</div>
