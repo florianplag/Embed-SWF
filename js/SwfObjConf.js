@@ -71,7 +71,7 @@ var testContent = {
 }
 
 var defaultContent = {
-	alternativeContent : "Get <a href=\"http://www.adobe.com/go/getflash\">Adobe Flash Player</a>.",
+	alternativeContent : "Get <a href=\"http://www.adobe.com/go/getflash\">Adobe Flash Player</a>. Embedded with the help of <a href=\"http://embed-swf.org\">embed-swf.org</a>.",
 	attributeAlign: "",
 	attributeClass: "",
 	attributeName: "",
