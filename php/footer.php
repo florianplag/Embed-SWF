@@ -1,4 +1,17 @@
-        	<footer>
+        	<footer>   
+				<p> 
+				<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-8894247493793366";
+				/* embedSwf-728x15-Configu */
+				google_ad_slot = "4481814297";
+				google_ad_width = 728;
+				google_ad_height = 15;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>				
+				</p>
 				<p>
 					
 					<!-- Dieses Tag in den Head-Bereich oder direkt vor dem schließenden Body-Tag einfügen -->
