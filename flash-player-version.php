@@ -65,7 +65,8 @@ $pageId = 3;
 						</p>						
 						<h2>Old Flash Player Versions</h2>
 						<p>The following lists show the major releases of the Flash Player with some of their main features.</p>
-						<ul>
+						<ul>  
+							<li><strong>Flash Player 11.2</strong> (11.2.202.228 / March 2012)<ul><li>Security Patches</li><li>Auto-Updater for Windows</li></ul></li>
 							<li><strong>Flash Player 11.1</strong> (11.1.102.55 / November 2011)<ul><li>Security Updates/Patches</li><li>Last official version for mobile browsers</li></ul></li>
 							<li><strong>Flash Player 11</strong> (11.0.1.152 / October 2011)<ul><li>Stage 3D (via Direct X / Open GL)</li><li>H.264 Encoding for the Camera</li><li>64 Bit Support</li><li>Protected HTTP Dynamic Streaming (HDS)</li><li>JPEG XR Decoding</li></ul></li>
 							<li><strong>Flash Player 10.3</strong> (10.3.181.14 / May 2011)<ul><li>Media Measurement</li><li>Acoustic Echo Cancellation (desktop only)</li><li>Local Storage in privacy mode</li><li>Native Control Panel</li></ul></li>
